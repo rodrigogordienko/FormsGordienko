@@ -1,0 +1,132 @@
+<div class="container">
+    <div class="row">
+      <div class="col-9">
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="row g-3">
+          <div class="col-md-6">
+            <label for="inputEmail4" class="form-label">Email *</label>
+            <input
+              formControlName="email"
+              type="email"
+              class="form-control"
+              [ngClass]="emailControl?.valid ? 'is-valid' : ''"
+              id="inputEmail4"
+              [class.is-valid]="emailControl?.valid"
+              [class.is-invalid]="
+                emailControl?.touched && emailControl?.invalid
+              "
+            />
+            <div
+              *ngIf="emailControl?.hasError('required')"
+              class="invalid-feedback"
+            >
+              Este campo es requerido
+            </div>
+            <div
+              *ngIf="emailControl?.hasError('pattern')"
+              class="invalid-feedback"
+            >
+              El email ingresado no es valido
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="inputPassword4" class="form-label">Password *</label>
+            <input
+              formControlName="contrasena"
+              type="password"
+              class="form-control"
+              [class.is-valid]="contrasenaControl?.valid"
+              [class.is-invalid]="
+                contrasenaControl?.touched && contrasenaControl?.invalid
+              "
+              id="inputPassword4"
+            />
+            <div
+              *ngIf="contrasenaControl?.hasError('required')"
+              class="invalid-feedback"
+            >
+              Este campo es requerido
+            </div>
+          </div>
+          <div class="col-12">
+            <label class="form-label">Nombre</label>
+            <input
+              [class.is-invalid]="nameControl?.touched && nameControl?.invalid"
+              formControlName="name"
+              type="text"
+              class="form-control"
+            />
+            <div
+              *ngIf="nameControl?.hasError('noHomero')"
+              class="invalid-feedback"
+            >
+              No se admiten Homeros
+            </div>
+          </div>
+          
+          <div class="col-12">
+            <label for="inputAddress2" class="form-label">Direccion</label>
+            <input
+              type="text"
+              class="form-control"
+              id="inputAddress2"
+              placeholder="Apartmento, piso"
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="inputCity" class="form-label">Ciudad</label>
+            <input type="text" class="form-control" id="inputCity" />
+          </div>
+          <div class="col-md-4">
+            <label for="inputState" class="form-label">Estado</label>
+            <select id="inputState" class="form-select">
+              <option selected>Choose...</option>
+              <option>Montevideo</option>
+              <option>Salto</option>
+              <option>Maldonado</option>
+            </select>
+          </div>
+          <div class="col-md-2">
+            <label for="inputZip" class="form-label">Zip</label>
+            <input type="file" class="form-control" id="inputZip" />
+          </div>
+
+          <div class="col-12">
+            <label for="inputPhone" class="form-label">Teléfono *</label>
+            <input
+                formControlName="telefono"
+                type="text"
+                class="form-control"
+                [class.is-invalid]="telefonoControl?.touched && telefonoControl?.invalid"
+                [class.is-valid]="telefonoControl?.valid"
+            />
+            <div *ngIf="telefonoControl?.hasError('required')" class="invalid-feedback">
+                Este campo es requerido
+            </div>
+            <div *ngIf="telefonoControl?.hasError('pattern')" class="invalid-feedback">
+                Solo se permiten números
+            </div>
+        </div>
+
+          <div class="col-12">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="gridCheck" />
+              <label class="form-check-label" for="gridCheck">
+                Salir
+              </label>
+            </div>
+          </div>
+          
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary">Registrarse</button>
+          </div>
+        </form>
+      </div>
+      <!--
+      <div class="col-6">
+        <pre>{{ userForm.status }}</pre>
+        <pre>{{ userForm.value | json }}</pre>
+      </div>
+    </div>
+-->
+  </div>
+  
